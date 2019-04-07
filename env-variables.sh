@@ -1,2 +1,2 @@
-export PROJECT="signtranslate"
-export YOUR_GCS_BUCKET="signbucket"
+export PROJECT=signtranslate-236821
+export YOUR_GCS_BUCKET=signbucket

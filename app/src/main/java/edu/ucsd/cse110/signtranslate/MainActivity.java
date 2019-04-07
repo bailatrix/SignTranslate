@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toolbar;
 import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         video.setVisibility(View.GONE);
         photo = (ImageView) findViewById(R.id.photoView);
         photo.setVisibility(View.VISIBLE);
-        photo.setBackgroundColor(Color.rgb(220, 220, 220));
+
 
 
         videoCameraBtn.setOnClickListener(new View.OnClickListener() {

@@ -2,6 +2,7 @@ package edu.ucsd.cse110.signtranslate;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -29,14 +30,19 @@ public class MainActivity extends AppCompatActivity {
         videoCameraBtn = (Button) findViewById(R.id.cameraBtn);
         photoCameraBtn = (Button) findViewById(R.id.photoCameraBtn);
         playBtn = (Button) findViewById(R.id.playBtn);
+        playBtn.setVisibility(View.GONE);
         video = (VideoView) findViewById(R.id.videoView);
+        video.setVisibility(View.GONE);
         photo = (ImageView) findViewById(R.id.photoView);
+        photo.setVisibility(View.VISIBLE);
+        photo.setBackgroundColor(Color.rgb(220, 220, 220));
 
 
         videoCameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent callVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+
                 //callVideoIntent.setAction(MediaStore.ACTION_VIDEO_CAPTURE);
                 //callVideoIntent.putExtra("intentIs", "videoIntent");
                 tag = true;
@@ -66,7 +72,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode == 0 && resultCode == RESULT_OK){
+            //if (requestCode == 1888) {
+
+
            /* if(data.getExtras().get("intentIs") == "videoIntent") {
                 Uri videoUri = data.getData();
                 video.setVideoURI(videoUri);
@@ -75,16 +85,23 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 photo.setImageBitmap(bitmap);
             }*/
-            if(tag == true) {
-                Uri videoUri = data.getData();
-                video.setVideoURI(videoUri);
-            }
-            else if(tag == false){
-                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                photo.setImageBitmap(bitmap);
+                if (tag == true) {
+                    Uri videoUri = data.getData();
+                    video.setVideoURI(videoUri);
+                    playBtn.setVisibility(View.VISIBLE);
+                    video.setVisibility(View.VISIBLE);
+                    photo.setVisibility(View.GONE);
+
+                } else if (tag == false) {
+                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                    video.setVisibility(View.GONE);
+                    photo.setVisibility(View.VISIBLE);
+                    playBtn.setVisibility(View.GONE);
+                    photo.setImageBitmap(bitmap);
+                }
             }
 
-        }
+        //}
 
     }
 }

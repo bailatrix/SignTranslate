@@ -8,27 +8,23 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        />
+        android:layout_width="220dp"
+        android:layout_height="200dp"
+        android:layout_margin="100dp"
+        android:background="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login with SnapChat"
-            android:id="@+id/snapchatLoginBtn"
-            />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Continue as Guest"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:text=""
             android:id="@+id/guestLoginBtn"
+            android:background="@drawable/sign_in"
             />
 
     </LinearLayout>

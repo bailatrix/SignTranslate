@@ -1,0 +1,4 @@
+#Sun Apr 07 12:29:27 PDT 2019
+base.0=C\:\\Users\\jjsoo\\Desktop\\mlkit-android-master\\mlkit-android-master\\final\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\6
+path.0=classes.dex
+renamed.0=classes.dex

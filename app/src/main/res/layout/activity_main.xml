@@ -7,22 +7,53 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <ImageView
+    <VideoView
         android:id="@+id/pictureView"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:contentDescription="data"/>
+        android:contentDescription="data"
+        android:layout_gravity="bottom"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cameraBtn"
-        android:text="Take A Photo!"
-        android:textAllCaps="false"
-        android:background="@color/colorPrimary"
-        android:padding="10dp"
-        android:layout_margin="10dp"
-        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/photoCameraBtn"
+            android:text="Take A Photo!"
+            android:textAllCaps="false"
+            android:background="@color/colorPrimary"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cameraBtn"
+            android:text="Record a Video!"
+            android:textAllCaps="false"
+            android:background="@color/colorPrimary"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playBtn"
+            android:text="Play!"
+            android:textAllCaps="false"
+            android:background="@color/colorPrimary"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            />
+
+    </LinearLayout>
 
 
 

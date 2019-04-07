@@ -8,9 +8,16 @@
     android:orientation="vertical">
 
     <VideoView
-        android:id="@+id/pictureView"
+        android:id="@+id/videoView"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
+        android:contentDescription="data"
+        android:layout_gravity="bottom"/>
+
+    <ImageView
+        android:id="@+id/photoView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:contentDescription="data"
         android:layout_gravity="bottom"/>
 

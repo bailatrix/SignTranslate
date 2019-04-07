@@ -14,32 +14,50 @@ import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
 
-    VideoView picture;
-    Button cameraBtn;
+    VideoView video;
+    ImageView photo;
+    Button videoCameraBtn;
+    Button photoCameraBtn;
     Button playBtn;
+    Boolean tag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cameraBtn = (Button) findViewById(R.id.cameraBtn);
+        videoCameraBtn = (Button) findViewById(R.id.cameraBtn);
+        photoCameraBtn = (Button) findViewById(R.id.photoCameraBtn);
         playBtn = (Button) findViewById(R.id.playBtn);
-        picture = (VideoView) findViewById(R.id.pictureView);
+        video = (VideoView) findViewById(R.id.videoView);
+        photo = (ImageView) findViewById(R.id.photoView);
 
-        cameraBtn.setOnClickListener(new View.OnClickListener() {
+
+        videoCameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent callVideoIntent = new Intent();
-                callVideoIntent.setAction(MediaStore.ACTION_VIDEO_CAPTURE);
+                Intent callVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+                //callVideoIntent.setAction(MediaStore.ACTION_VIDEO_CAPTURE);
+                //callVideoIntent.putExtra("intentIs", "videoIntent");
+                tag = true;
                 startActivityForResult(callVideoIntent, 0);
+            }
+        });
+
+        photoCameraBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent imageIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //imageIntent.putExtra("intentIs", "imageIntent");
+                tag = false;
+                startActivityForResult(imageIntent, 0);
             }
         });
 
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                picture.start();
+                video.start();
 
             }
         });
@@ -49,8 +67,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 0 && resultCode == RESULT_OK){
-            Uri videoUri = data.getData();
-            picture.setVideoURI(videoUri);
+           /* if(data.getExtras().get("intentIs") == "videoIntent") {
+                Uri videoUri = data.getData();
+                video.setVideoURI(videoUri);
+            }
+            else if(data.getExtras().get("intentIs") == "imageIntent"){
+                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                photo.setImageBitmap(bitmap);
+            }*/
+            if(tag == true) {
+                Uri videoUri = data.getData();
+                video.setVideoURI(videoUri);
+            }
+            else if(tag == false){
+                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                photo.setImageBitmap(bitmap);
+            }
 
         }
 
